@@ -33,8 +33,8 @@ def rename(media):
 def deleter(directory):     
     for path, subdir, files in os.walk(directory):
          for file in files:
-            if not file.lower().endswith(subtitle_formats) or not file.lower().endswith(video_formats):
-                    os.remove(os.join.path(path,file))
+            if not file.lower().endswith(subtitle_formats) and not file.lower().endswith(video_formats):
+                os.remove(os.path.join(path,file))
 def choice():
     choice= input("Do you want to rename any other directory? \n 1. Yes \n 2.No")
     if choice.lower()=='yes' or choice=='1':

@@ -16,7 +16,7 @@ def findingmedia(directory):
         for file in files:
             #Appends the path and names of video files into media list.
             if file.lower.endswith(video_formats):
-                media.append(os.path.join(path,file))
+                media.append((path,file))
             #Checks if other files are subtitle files, if not, deletes them.
             elif not file.lower.endswith(subtitle_formats):
                 os.remove(file)
@@ -33,20 +33,21 @@ def findingmedia(directory):
 
 
 
-#get the format from the user and get the names of files from openAI according to that
+#Rename according to inputs provided by the user
 def rename(media):
-
-
-
-
-    
-
-#Rename
-
-
+    for element in media:
+        print(f'The name of this file is {element[1]}')
+        nname=str(input("Enter the new name for this file"))
+        newname= os.path.join(element[0], nname)
+        file=os.path.join(element[0], element[1])
+        os.rename(file, newname)
 
 #final function
 
 def main():
     directory=str(input("please enter the directory to be renamed"))
-    format=str(input("Please enter the format you will like the files to be renamed in"))
+    #format=str(input("Please enter the format you will like the files to be renamed in"))
+    media=findingmedia(directory)
+    rename(media)
+
+

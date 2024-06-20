@@ -32,7 +32,7 @@ def rename(media):
             print(f'File with name {element[1]} renamed to {nname} successfully')
         except OSError as error:
             print(f"Could not rename file {element[1]} \n Error = {error}")
-            
+
 #Deletes obsolete files other than the files with extensions specified in the subtitle_formats and video_formats tuples.
 def deleter(directory):
     count=0
@@ -45,31 +45,31 @@ def deleter(directory):
                 except OSError as error:
                     print(f"Could not delete file {file} \n Error = {error}")
 
-
-def choice():
+#Lets the user rename another Directory/exit the program
+def again():
     choice= input("Do you want to rename any other directory? \n 1. Yes \n 2.No")
     if choice.lower()=='yes' or choice=='1':
         main()
     elif choice.lower()=='no' or choice =='2':
         print("Thank you for using this program :)")
-        return
+        quit()
     else:
         print("Wrong input, try again")
-        choice()
+        again()
 
 
 def main():
     print("Welcome to media renamer ^-^")
     directory=str(input("please enter the directory to be renamed"))
     if not os.path.isdir(directory):
-        print("Wrong Directory, exiting")
-        choice()
+        print("Wrong Directory, exiting this directory.")
+        again()
     
     #format=str(input("Please enter the format you will like the files to be renamed in"))
     media=findingmedia(directory)
     if not media:
         print(f"No media files in this directory \n {directory}")
-        choice()
+        again()
     
     rename(media)
     delete= input("Do you want to delete obsolete files in this directory? \n 1. Yes \n 2.No")
@@ -81,7 +81,7 @@ def main():
         print(f"Files in the directory {directory} renamed successfully")
     else:
         print("wrong input, ignoring.")
-    choice()
+    again()
 
 main()
     

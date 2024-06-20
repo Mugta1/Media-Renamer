@@ -2,7 +2,7 @@
 import os
 import openai
 #Initial commit
-
+#this does not work 
 openai.api_keyapi= "your openai key"
 
 #get the name of media files in a given directory
@@ -17,7 +17,7 @@ def findingmedia(directory):
     return media
 
 def newname(media, format):
-    
+
 
 
 

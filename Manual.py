@@ -1,9 +1,9 @@
-
+##This can be used to rename your files manually, without using OpenAI or Any other LLM
 import os
-import openai
+
 #Initial commit
 
-openai.api_keyapi= "your openai key"
+
 
 #get the name of media files in a given directory
 
@@ -16,7 +16,6 @@ def findingmedia(directory):
 
     return media
 
-def newname(media, format):
     
 
 
@@ -24,7 +23,7 @@ def newname(media, format):
 
 
 #get the format from the user and get the names of files from openAI according to that
-def rename(media, newname):
+def rename(media, :
 
 
 

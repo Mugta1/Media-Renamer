@@ -29,8 +29,10 @@ def rename(media):
             file=os.path.join(element[0], element[1])
             #Rename
             os.rename(file, newname)
-        except:
-            print(f"Could not rename file {element[1]}")
+            print(f'File with name {element[1]} renamed to {nname} successfully')
+        except OSError as error:
+            print(f"Could not rename file {element[1]} \n Error = {error}")
+            
 #Deletes obsolete files other than the files with extensions specified in the subtitle_formats and video_formats tuples.
 def deleter(directory):
     count=0
@@ -40,8 +42,9 @@ def deleter(directory):
                 try:
                     os.remove(os.path.join(path,file))
                     count+=1
-                except:
-                    print(f"Could not delete file {file}")
+                except OSError as error:
+                    print(f"Could not delete file {file} \n Error = {error}")
+
 
 def choice():
     choice= input("Do you want to rename any other directory? \n 1. Yes \n 2.No")

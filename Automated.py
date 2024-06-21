@@ -83,12 +83,12 @@ def main():
     format=str(input("Please enter the format you will like the files to be renamed in\n"))
     examplein=str(input("Enter an example name to be changed\n"))
     exampleout=str(input("Enter the accurate output desired for the given example\n"))
-    
+    #If directory is invalid
     if not os.path.isdir(directory):
         print("Wrong Directory, exiting this directory. ")
         again()
     
-  
+    #if there are no media files in the given directory
     media=findingmedia(directory)
     if not media:
         print(f"No media files in this directory \n {directory}")

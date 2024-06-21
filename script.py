@@ -23,7 +23,7 @@ def newname(media, format):
 
 
 
-#get the format from the user and get the names of files from openAI according to that
+#get the format from the user and get the names of files from Gemini according to that
 def rename(media, newname):
 
 
@@ -37,5 +37,8 @@ def rename(media, newname):
 #final function
 
 def main():
-    directory=str(input("please enter the directory to be renamed"))
+    directory=str(input("please enter the directory to be renamed \n"))
     format=str(input("Please enter the format you will like the files to be renamed in"))
+    examplein=str(input("Enter an example name to be changed"))
+    exampleout=str(input("Enter the accurate output desired for the given example"))
+

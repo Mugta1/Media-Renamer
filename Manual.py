@@ -23,10 +23,13 @@ def rename(media):
     for element in media:
         #Take input for the new name from user
         print(f'The name of this file is {element[1]}')
-        nname=str(input("Enter the new name for this file"))
+        nname=str(input("Enter the new name for this file \n"))
+        splitname=element[1].split('.')
+        format=splitname[-1]
+        nname=nname+'.'+format
         try:
-            newname= os.path.join(element[0], nname)
             file=os.path.join(element[0], element[1])
+            newname= os.path.join(element[0], nname)
             #Rename
             os.rename(file, newname)
             print(f'File with name {element[1]} renamed to {nname} successfully')
@@ -47,7 +50,7 @@ def deleter(directory):
 
 #Lets the user rename another Directory/exit the program
 def again():
-    choice= input("Do you want to rename any other directory? \n 1. Yes \n 2.No")
+    choice= input("Do you want to rename any other directory? \n 1. Yes \n 2.No \n")
     if choice.lower()=='yes' or choice=='1':
         main()
     elif choice.lower()=='no' or choice =='2':
@@ -57,12 +60,12 @@ def again():
         print("Wrong input, try again")
         again()
 
-
+#Main function
 def main():
     print("Welcome to media renamer ^-^")
-    directory=str(input("please enter the directory to be renamed"))
+    directory=str(input("please enter the directory to be renamed \n"))
     if not os.path.isdir(directory):
-        print("Wrong Directory, exiting this directory.")
+        print("Wrong Directory, exiting this directory. ")
         again()
     
     #format=str(input("Please enter the format you will like the files to be renamed in"))
@@ -72,7 +75,7 @@ def main():
         again()
     
     rename(media)
-    delete= input("Do you want to delete obsolete files in this directory? \n 1. Yes \n 2.No")
+    delete= input("Do you want to delete obsolete files in this directory? \n 1. Yes \n 2.No \n")
     if delete.lower()=='yes' or delete=='1':
         deleter(directory)
         print(f"Files in the directory {directory} renamed and obsolete files deleted successfully.")

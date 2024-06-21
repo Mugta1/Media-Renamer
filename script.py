@@ -2,7 +2,7 @@
 import os
 import google.generativeai as genai
 #Initial commit
-#this does not work 
+genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 #Add/Remove extensions from these lists according to your need.
 video_formats= ('.mp4', '.avi', '.mkv', '.mov', '.wmv', '.flv', '.m4v', '.mpg', '.mpeg', '.3gp', '.3g2', '.webm', '.vob', '.ogv', '.ts')
@@ -20,44 +20,21 @@ def findingmedia(directory):
     return media
 
 
-def newname(media, format):
+#get the format and example from the user and get the names of files from Gemini according to that
 
+def newname(prompt):
+    model = genai.GenerativeModel('gemini-1.0-pro-latest')
+    nname = model.generate_content(prompt)
+    return nname  
 
-
-
-
-
-#get the format from the user and get the names of files from Gemini according to that
-def rename(media, newname):
-
-
-
-    
-
-#Rename
-
-
-
-#final function
-
-def main():
-    directory=str(input("please enter the directory to be renamed \n"))
-    format=str(input("Please enter the format you will like the files to be renamed in"))
-    examplein=str(input("Enter an example name to be changed"))
-    exampleout=str(input("Enter the accurate output desired for the given example"))
-
-
-
-
-
-#Rename according to inputs provided by the user
-def rename(media):
+#Rename according to format and example provided by the user 
+def rename(media, format, examplein, exampleout):
     for element in media:
-        #Take input for the new name from user
+        prompt= "rename the following media according to the format \n" + format + "\n\n" + "for example" + examplein + "\n will change to \n" + exampleout+ "\n now rename this" + element[1]+ "only return the renamed name as your output"
         print(f'The name of this file is {element[1]}')
-        nname=str(input("Enter the new name for this file \n"))
         splitname=element[1].split('.')
         format=splitname[-1]
+        nname=newname(prompt)
         nname=nname+'.'+format
         try:
             file=os.path.join(element[0], element[1])
@@ -96,6 +73,10 @@ def again():
 def main():
     print("Welcome to media renamer ^-^")
     directory=str(input("please enter the directory to be renamed \n"))
+    format=str(input("Please enter the format you will like the files to be renamed in"))
+    examplein=str(input("Enter an example name to be changed"))
+    exampleout=str(input("Enter the accurate output desired for the given example"))
+    
     if not os.path.isdir(directory):
         print("Wrong Directory, exiting this directory. ")
         again()
@@ -106,7 +87,7 @@ def main():
         print(f"No media files in this directory \n {directory}")
         again()
     
-    rename(media)
+    rename(media, format, examplein, exampleout)
     delete= input("Do you want to delete obsolete files in this directory? \n 1. Yes \n 2.No \n")
     if delete.lower()=='yes' or delete=='1':
         deleter(directory)

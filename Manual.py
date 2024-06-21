@@ -85,10 +85,7 @@ def main():
     else:
         print("wrong input, ignoring.")
     again()
-
+ 
+#Call the main function
 main()
-    
-
-    
-
 

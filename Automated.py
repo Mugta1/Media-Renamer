@@ -46,7 +46,7 @@ def rename(media, format, examplein, exampleout):
             #Rename
             os.rename(file, newname)
             print(f'File with name {element[1]} renamed to {nname} successfully')
-            count=+1
+            count+=1
             
         except OSError as error:
             print(f"Could not rename file {element[1]} \n Error = {error}")

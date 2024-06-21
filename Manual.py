@@ -20,6 +20,7 @@ def findingmedia(directory):
 
 #Rename according to inputs provided by the user
 def rename(media):
+    count=0
     for element in media:
         #Take input for the new name from user
         print(f'The name of this file is {element[1]}')
@@ -33,12 +34,13 @@ def rename(media):
             #Rename
             os.rename(file, newname)
             print(f'File with name {element[1]} renamed to {nname} successfully')
+            count+=1
         except OSError as error:
             print(f"Could not rename file {element[1]} \n Error = {error}")
-
+    return count
 #Deletes obsolete files other than the files with extensions specified in the subtitle_formats and video_formats tuples.
 def deleter(directory):
-    count=0
+    deleted=0
     for path, subdir, files in os.walk(directory):
          for file in files:
             if not file.lower().endswith(subtitle_formats) and not file.lower().endswith(video_formats):
@@ -47,6 +49,7 @@ def deleter(directory):
                     count+=1
                 except OSError as error:
                     print(f"Could not delete file {file} \n Error = {error}")
+    return deleted
 
 #Lets the user rename another Directory/exit the program
 def again():
@@ -74,14 +77,14 @@ def main():
         print(f"No media files in this directory \n {directory}")
         again()
     
-    rename(media)
+    counter=rename(media)
     delete= input("Do you want to delete obsolete files in this directory? \n 1. Yes \n 2.No \n")
     if delete.lower()=='yes' or delete=='1':
-        deleter(directory)
-        print(f"Files in the directory {directory} renamed and obsolete files deleted successfully.")
+        deleted= deleter(directory)
+        print(f"{counter} Files in the directory {directory} renamed and {deleted} obsolete files deleted successfully.")
         
     elif delete.lower()=='no' or delete=='2':
-        print(f"Files in the directory {directory} renamed successfully")
+        print(f"{counter} Files in the directory {directory} renamed successfully")
     else:
         print("wrong input, ignoring.")
     again()

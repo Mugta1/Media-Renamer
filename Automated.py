@@ -29,8 +29,6 @@ def newnamer(prompt):
 
 
 
-
-
 #Rename according to format and example provided by the user 
 def rename(media, format, examplein, exampleout):
     for element in media:
@@ -85,7 +83,7 @@ def main():
         print("Wrong Directory, exiting this directory. ")
         again()
     
-    #format=str(input("Please enter the format you will like the files to be renamed in"))
+  
     media=findingmedia(directory)
     if not media:
         print(f"No media files in this directory \n {directory}")

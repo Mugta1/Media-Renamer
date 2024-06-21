@@ -1,7 +1,7 @@
 
 import os
 import google.generativeai as genai
-#Initial commit
+#Enter your own Gemini API Key
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 #Add/Remove extensions from these lists according to your need.
@@ -20,7 +20,7 @@ def findingmedia(directory):
     return media
 
 
-#get the format and example from the user and get the names of files from Gemini according to that
+#Takes a prompt as an input that contains information from the user such as format, examplein, exampleout, and the name of the file to be renamed and returns the new name according to the format.
 
 def newnamer(prompt):
     model = genai.GenerativeModel('gemini-1.0-pro-latest')
@@ -31,8 +31,10 @@ def newnamer(prompt):
 
 #Rename according to format and example provided by the user 
 def rename(media, format, examplein, exampleout):
+    count=0
     for element in media:
         prompt= "rename the following media according to the format \n" + format + "\n\n" + "for example: \n" + examplein + "\nwill change to \n" + exampleout+ "\n\nnow rename this: \n" + element[1]+ "\n\nonly return the renamed name as your output"
+        #get the nname from gemini API
         nname=newnamer(prompt)
         print(f'The name of this file is {element[1]}')
         splitname=element[1].split('.')
@@ -44,20 +46,23 @@ def rename(media, format, examplein, exampleout):
             #Rename
             os.rename(file, newname)
             print(f'File with name {element[1]} renamed to {nname} successfully')
+            count=+1
+            
         except OSError as error:
             print(f"Could not rename file {element[1]} \n Error = {error}")
+    return count
 
 #Deletes obsolete files other than the files with extensions specified in the subtitle_formats and video_formats tuples.
 def deleter(directory):
-    count=0
+    deleted=0
     for path, subdir, files in os.walk(directory):
          for file in files:
             if not file.lower().endswith(subtitle_formats) and not file.lower().endswith(video_formats):
                 try:
                     os.remove(os.path.join(path,file))
-                    count+=1
                 except OSError as error:
                     print(f"Could not delete file {file} \n Error = {error}")
+    return deleted
 
 #Lets the user rename another Directory/exit the program
 def again():
@@ -89,14 +94,14 @@ def main():
         print(f"No media files in this directory \n {directory}")
         again()
     
-    rename(media, format, examplein, exampleout)
+    counter= rename(media, format, examplein, exampleout)
     delete= input("Do you want to delete obsolete files in this directory? \n 1. Yes \n 2.No \n")
     if delete.lower()=='yes' or delete=='1':
-        deleter(directory)
-        print(f"Files in the directory {directory} renamed and obsolete files deleted successfully.")
+        deleted= deleter(directory)
+        print(f"{counter} Files in the directory {directory} renamed and {deleted} obsolete files deleted successfully.")
         
     elif delete.lower()=='no' or delete=='2':
-        print(f"Files in the directory {directory} renamed successfully")
+        print(f"{counter} Files in the directory {directory} renamed successfully")
     else:
         print("wrong input, ignoring.")
     again()

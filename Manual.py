@@ -1,4 +1,4 @@
-##This can be used to rename your files manually, without using OpenAI or Any other LLM
+##This can be used to rename your files manually, without using OpenAI,Gemini or Any other LLM
 import os
 
 #Add/Remove extensions from these lists according to your need.

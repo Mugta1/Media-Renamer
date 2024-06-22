@@ -80,7 +80,7 @@ def again():
 #Main function
 def main():
     print("Welcome to media renamer ^-^")
-    directory=str(input("please enter the directory to be renamed \n"))
+    directory=str(input("please enter the directory to be renamed \n")).strip()
     format=str(input("Please enter the format you will like the files to be renamed in\n"))
     examplein=str(input("Enter an example name to be changed\n"))
     exampleout=str(input("Enter the accurate output desired for the given example\n"))

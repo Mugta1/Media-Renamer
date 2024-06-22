@@ -1,7 +1,8 @@
 
 import os
 import google.generativeai as genai
-#Enter your own Gemini API Key
+#Enter your shiny Gemini API Key
+#get one from https://ai.google.dev/gemini-api/docs/api-key
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 #Add/Remove extensions from these lists according to your need.

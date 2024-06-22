@@ -26,7 +26,7 @@ def rename(media):
         #Take input for the new name from user
         print(f'The name of this file is {element[1]}')
         nname=str(input("Enter the new name for this file \n"))
-        splitname=element[1].split('.')
+        splitname=element[1].rsplit('.', 1)
         format=splitname[-1]
         nname=nname+'.'+format
         try:

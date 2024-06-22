@@ -1,4 +1,5 @@
 ##This can be used to rename your files manually, without using OpenAI,Gemini or Any other LLM
+##Possible issues with windows but working perfectly on linux and macOS
 import os
 
 #Add/Remove extensions from these lists according to your need.

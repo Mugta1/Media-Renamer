@@ -1,4 +1,4 @@
-#Testing of this program is pending.
+
 import os
 import google.generativeai as genai
 #Enter your own Gemini API Key

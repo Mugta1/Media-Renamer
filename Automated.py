@@ -38,7 +38,7 @@ def rename(media, format, examplein, exampleout):
         #get the nname from gemini API
         nname=newnamer(prompt)
         print(f'The name of this file is {element[1]}')
-        splitname=element[1].split('.')
+        splitname=element[1].rsplit('.', 1)
         format=splitname[-1]
         nname=nname+'.'+format
         try:

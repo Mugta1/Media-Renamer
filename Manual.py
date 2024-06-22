@@ -67,7 +67,7 @@ def again():
 #Main function
 def main():
     print("Welcome to media renamer ^-^")
-    directory=str(input("please enter the directory to be renamed \n"))
+    directory=str(input("please enter the directory to be renamed \n")).strip()
     if not os.path.isdir(directory):
         print("Wrong Directory, exiting this directory. ")
         again()

@@ -67,7 +67,7 @@ Feel free to adjust these formats to suit your needs. Simply modify the format t
 1. **Run the Program**
 
    ```bash
-   python media_renamer.py
+   python Automated.py
    ```
 
 2. **Follow the Prompts**

@@ -112,6 +112,7 @@ Do you want to rename any other directory?
 
 Thank you for using Media Renamer! :)
 ```
+It might look like its manual but once you have given an example, The rest of them will be renamed automatically.
 
 ---
 

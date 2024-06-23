@@ -127,8 +127,11 @@ It might look like its manual but once you have given an example, The rest of th
 - **Dependencies**: Requires `google-generativeai` library and Python standard libraries.
 
 ---
+
 ## Issues
 - Windows might face errors while renaming files if the directory has special characters in its name. Simply removing special characters from the directory/path solves the issue.
+
+---
 
 ## Contributing
 

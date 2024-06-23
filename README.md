@@ -16,9 +16,10 @@ Enjoy! ^-^
 4. [Usage](#usage)
 5. [Example](#example)
 6. [Compatibility](#compatibility)
-7. [Contributing](#contributing)
-8. [Acknowledgements](#acknowledgements)
-9. [License](#license)
+7. [Issues](#issues)
+8. [Contributing](#contributing)
+9. [Acknowledgements](#acknowledgements)
+10. [License](#license)
 
 ---
 
@@ -126,6 +127,8 @@ It might look like its manual but once you have given an example, The rest of th
 - **Dependencies**: Requires `google-generativeai` library and Python standard libraries.
 
 ---
+## Issues
+- Windows might face errors while renaming files if the directory has special characters in its name. Simply removing special characters from the directory/path solves the issue.
 
 ## Contributing
 

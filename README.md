@@ -6,7 +6,7 @@ Welcome to the Media Renamer project! This tool helps you rename media files (vi
 
 This repository also contains manual.py which can be used to rename your files manually without using any LLM API. The usage procedure for manual.py is same as Automated.py, except you don't need to install google-generativeai 
 
-Enjoy! ^-^
+Enjoy! ^-^ 
 
 ## Index
 

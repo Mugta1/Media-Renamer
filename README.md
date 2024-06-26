@@ -19,7 +19,7 @@ Enjoy! ^-^
 7. [Issues](#issues)
 8. [Contributing](#contributing)
 9. [Acknowledgements](#acknowledgements)
-10. [License](#license)
+10. [License](#license)   
 
 ---
 

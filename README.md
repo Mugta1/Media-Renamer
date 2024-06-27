@@ -4,7 +4,7 @@
 
 Welcome to the Media Renamer project! This tool helps you rename media files (videos and subtitles) in a specified directory based on a format you provide. It also offers the option to delete obsolete files that aren't video or subtitle files. The renaming process utilizes the Gemini API to generate new names based on your specified format.
 
-This repository also contains manual.py which can be used to rename your files manually without using any LLM API. The usage procedure for manual.py is same as Automated.py, except you don't need to install google-generativeai 
+This repository also contains manual.py which can be used to rename your files manually without using any LLM API. The usage procedure for manual.py is same as Automated.py, except you don't need to install google-generativeai   
 
 Enjoy! ^-^ 
 

@@ -1,4 +1,3 @@
-
 import os
 import google.generativeai as genai
 #Enter your shiny Gemini API Key
@@ -24,7 +23,7 @@ def findingmedia(directory):
 
 #Takes a prompt as an input that contains information from the user such as format, examplein, exampleout, and the name of the file to be renamed and returns the new name according to the format.
 
-def newnamer(prompt)->str:
+def newnamer(prompt:str)->str:
     model = genai.GenerativeModel('gemini-1.0-pro-latest')
     nname = model.generate_content(prompt)
     return nname

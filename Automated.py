@@ -61,6 +61,7 @@ def deleter(directory):
             if not file.lower().endswith(subtitle_formats) and not file.lower().endswith(video_formats):
                 try:
                     os.remove(os.path.join(path,file))
+                    count+=1
                 except OSError as error:
                     print(f"Could not delete file {file} \n Error = {error}")
     return deleted

@@ -66,6 +66,7 @@ def deleter(directory):
                     print(f"Could not delete file {file} \n Error = {error}")
     return deleted
 
+
 #Lets the user rename another Directory/exit the program
 def again():
     choice= input("Do you want to rename any other directory? \n 1. Yes \n 2.No \n")
